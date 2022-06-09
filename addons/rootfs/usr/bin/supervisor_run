@@ -29,6 +29,11 @@ function run_supervisor() {
         "homeassistant/${HA_ARCH}-hassio-supervisor:${SUPERVISOR_VERSION}"
 }
 
+function cleanup() {
+    echo "Cleanup Supervisor"
+    rm -rf /tmp/supervisor_data
+}
+
 
 if [ "$( docker container inspect -f '{{.State.Status}}' hassio_supervisor )" == "running" ]; then
     echo "Restarting Supervisor"
@@ -50,4 +55,5 @@ else
     init_os_agent
     run_supervisor
     stop_docker
+    cleanup
 fi

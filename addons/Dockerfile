@@ -15,9 +15,9 @@ RUN \
         libpulse0 \
         xz-utils
 
-COPY ./common/rootfs /
-COPY ./common/rootfs_supervisor /
-COPY ./common/install /tmp/common/install
+COPY common/rootfs /
+COPY common/rootfs_supervisor /
+COPY common/install /tmp/common/install
 
 # Install common
 RUN \
@@ -28,4 +28,4 @@ RUN \
         cas \
         os-agent
 
-COPY ./addons/rootfs /
+COPY rootfs /
